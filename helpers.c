@@ -8,9 +8,9 @@ void grayscale(int height, int width, RGBTRIPLE image[height][width])
         for (int j = 0; j < width; j++)
         {
             float graysc = (float)(image[i][j].rgbtBlue + image[i][j].rgbtGreen + image[i][j].rgbtRed) / (float) 3 ;
-            image[i][j].rgbtBlue = round(graysc);
-            image[i][j].rgbtGreen = round(graysc);
-            image[i][j].rgbtRed = round(graysc);
+            image[i][j].rgbtBlue = graysc;
+            image[i][j].rgbtGreen = graysc;
+            image[i][j].rgbtRed = graysc;
         }
     }
     return;
@@ -55,34 +55,7 @@ void sepia(int height, int width, RGBTRIPLE image[height][width])
     return;
 }
 
-// Reflect image horizontally
-void reflect(int height, int width, RGBTRIPLE image[height][width])
-{
-    int mid;
-    if (width % 2 == 0)
-    {
-        mid = width / 2;
-    }
-    else
-    {
-        mid = (width - 1) / 2;
-    }
-    for (int i = 0; i < height; i++)
-    {
-        for (int j = 0, count = 1; j < mid; j++)
-        {
 
-            RGBTRIPLE tmp = image[i][j];
-            image[i][j] = image[i][width - count];
-            image[i][width - count] = tmp;
-            count++;
-        }
-
-
-
-    }
-    return;
-}
 
 // Blur image
 void blur(int height, int width, RGBTRIPLE image[height][width])
